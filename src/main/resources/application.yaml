@@ -10,3 +10,13 @@ management:
   info:
     git:
       mode: full
+spring:
+  boot:
+    admin:
+      client:
+        username: ${GLIMPSE_USER:hello}
+        password: ${GLIMPSE_PASSWORD:hello}
+        url: ${GLIMPSE_URL:http://127.0.0.1:9999}
+        instance:
+          name: ${APP_NAME:kubedeployer}
+          service-base-url: ${APP_BASE_URL:http://127.0.0.1:8888}
