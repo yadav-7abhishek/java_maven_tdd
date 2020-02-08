@@ -19,4 +19,4 @@ spring:
         url: ${GLIMPSE_URL:http://127.0.0.1:9999}
         instance:
           name: ${APP_NAME:BabyService}
-          service-base-url: ${APP_BASE_URL:http://127.0.0.1:8888}
+          service-base-url: http://${APP_BASE_URL:127.0.0.1}:8888
