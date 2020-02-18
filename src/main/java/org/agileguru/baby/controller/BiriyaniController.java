@@ -1,14 +1,13 @@
 package org.agileguru.baby.controller;
 
-import org.agileguru.baby.BiriyaniAppLogMetaData;
 import org.agileguru.baby.exceptions.YouWillHaveABadTummyException;
 import org.agileguru.baby.model.Biriyani;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.alacritysys.frameworks.logging.elf.Logger;
-import com.alacritysys.frameworks.logging.elf.factory.LogFactory;
 
 public class BiriyaniController {
-    private static final Logger LOGGER = LogFactory.getLogger(BiriyaniController.class, new BiriyaniAppLogMetaData());
+    private static final Logger LOGGER = LoggerFactory.getLogger(BiriyaniController.class);
     
     public Biriyani getMild() {
         return createBiriyaniWithSprice(1);
@@ -32,6 +31,6 @@ public class BiriyaniController {
     }
 
     public void debugSpiceContent(Biriyani biriyani) {
-        LOGGER.logDebugFormatted("Returning a Biriyani with {} spoons of spices", biriyani.getSpiceAmount());
+        LOGGER.debug("Returning a Biriyani with {} spoons of spices", biriyani.getSpiceAmount());
     }
 }

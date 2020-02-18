@@ -1,26 +1,40 @@
 package org.agileguru.baby.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 import java.lang.annotation.Annotation;
 
 import org.agileguru.baby.BabyApplication;
 import org.agileguru.baby.Constants;
+import org.agileguru.baby.service.NameByTypeService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RestController;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = BabyApplication.class)
-public class AmyControllerTest {
+@RunWith(MockitoJUnitRunner.class)
+public class AmyControllerMockTest {
     
-    @Autowired
-    private AmyController amyController;
+    @Mock
+    private NameByTypeService service; 
+    @InjectMocks
+    private AmyController amyController  = new AmyController();
 
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        when(service.getByType(Constants.DAD_MAPPING)).thenReturn(Constants.DAD_NAME);
+        when(service.getByType(Constants.WORK_MAPPING)).thenReturn(Constants.WORK);
+    }
+    
     @Test
     public void testNotNull() {
         assertThat(this.amyController).isNotNull();
@@ -31,13 +45,10 @@ public class AmyControllerTest {
         assertThat(this.amyController.getByName(Constants.DAD_MAPPING).getBody()).isNotNull()
                 .isEqualTo(Constants.DAD_NAME);
     }
-
     @Test
-    public void testGetGuru() {
-        assertThat(this.amyController.getByName("Guru").getBody()).isNotNull()
-        .isEqualTo("Vandy");
-        assertThat(this.amyController.getByName("Guru").getStatusCode()).isNotNull()
-        .isEqualTo(HttpStatus.BAD_REQUEST);
+    public void testGetWork() {
+        assertThat(this.amyController.getByName(Constants.WORK_MAPPING).getBody()).isNotNull()
+        .isEqualTo(Constants.WORK);
     }
 
     @Test

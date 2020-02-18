@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <configuration debug="false">
-  <appender name="STASH_JSON"
-    class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <destination>ldn02:30326</destination>
-    <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-      <customFields>{"componentName":"BabyService","componentType":"Demo","environment":"${environment:-local}"}</customFields>
-    </encoder>
-  </appender>
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{26} %X{X-APP_CORRELATION_ID} - %msg%n</pattern>
     </encoder>
   </appender>
   <root level="INFO">
-    <appender-ref ref="STASH_JSON" />
     <appender-ref ref="STDOUT" />
   </root>
 </configuration>

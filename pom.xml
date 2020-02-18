@@ -1,47 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-      <groupId>com.alacritysys.developer</groupId>
-      <artifactId>platform-plugin-bom</artifactId>
-      <version>2.0.0-RELEASE</version>
-   </parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.12.RELEASE</version>
+  </parent>
   <groupId>org.agileguru</groupId>
   <artifactId>baby</artifactId>
   <version>0.0.1-SNAPSHOT</version>
    <packaging>war</packaging>
    <name>Baby REST Server</name>
    <description>Baby REST Server</description>
-   <url>${api.site.base}/${project.artifactId}</url>
-   <organization>
-      <name>Alacrity Integrated</name>
-      <url>http://www.alacritysys.com</url>
-   </organization>
-   <scm>
-      <connection>scm:git:${scm.base}/Playground/baby.git</connection>
-      <developerConnection>scm:git:${scm.base}/Playground/baby.git</developerConnection>
-      <url>${scm.base}/summary/Playground/baby.git</url>
-   </scm>
-   <ciManagement>
-      <system>Jenkins</system>
-      <url>${ci.base}/job/Playground/job/baby</url>
-   </ciManagement>
-   <developers>
-      <developer>
-         <id>graghupa</id>
-         <name>Guru Raghupathy</name>
-         <email>webtechguru@gmail.com</email>
-         <organization>Alacrity Integrated</organization>
-         <organizationUrl>http://www.alacritysys.com</organizationUrl>
-         <roles>
-            <role>Project Architect</role>
-         </roles>
-      </developer>
-   </developers>
-   <properties>
-      <image.name>${docker.base.name}/${project.artifactId}/${project.artifactId}:${project.version}</image.name>
-      <image.base.from>${docker.base.name}/openjdk:1.0.0</image.base.from>
-      <app.dest.dir>/app</app.dest.dir>
-   </properties>
    <distributionManagement>
       <snapshotRepository>
          <uniqueVersion>false</uniqueVersion>
@@ -59,21 +28,9 @@
    <dependencyManagement>
       <dependencies>
          <dependency>
-           <groupId>com.alacritysys.libs</groupId>
-           <artifactId>web</artifactId>
-           <version>6.0.0-RELEASE</version>
-         </dependency>
-         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured-all</artifactId>
             <version>4.1.2</version>
-         </dependency>
-         <dependency>
-            <groupId>com.alacritysys.platform</groupId>
-            <artifactId>platform-bom</artifactId>
-            <version>6.0.0-RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
          </dependency>
       </dependencies>
    </dependencyManagement>
@@ -89,35 +46,13 @@
          <artifactId>lombok</artifactId>
       </dependency>
       <dependency>
-        <groupId>com.alacritysys.frameworks</groupId>
-        <artifactId>restobjects</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>com.alacritysys.libs</groupId>
-        <artifactId>web</artifactId>
-      </dependency>
-      <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-actuator</artifactId>
       </dependency>
       <dependency>
         <groupId>de.codecentric</groupId>
         <artifactId>spring-boot-admin-starter-client</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>com.alacritysys.frameworks</groupId>
-        <artifactId>app-testing</artifactId>
-        <scope>test</scope>
-        <exclusions>
-            <exclusion>
-                <groupId>io.rest-assured</groupId>
-                <artifactId>json-path</artifactId>
-            </exclusion>
-            <exclusion>
-                <groupId>io.rest-assured</groupId>
-                <artifactId>json-schema-validator</artifactId>
-            </exclusion>
-        </exclusions>
+        <version>2.1.5</version>
       </dependency>
       <dependency>
          <groupId>org.springframework.boot</groupId>
@@ -252,60 +187,6 @@
                </execution>
             </executions>
          </plugin>
-         <plugin>
-            <groupId>io.fabric8</groupId>
-            <artifactId>docker-maven-plugin</artifactId>
-            <configuration>
-               <images>
-                  <image>
-                     <name>${image.name}</name>
-                     <build>
-                        <from>${image.base.from}</from>
-                        <assembly>
-                           <descriptorRef>artifact</descriptorRef>
-                           <targetDir>${app.dest.dir}</targetDir>
-                        </assembly>
-                        <cmd>
-                           <exec>
-                              <arg>java</arg>
-                              <arg>-jar</arg>
-                              <arg>${app.dest.dir}/${project.artifactId}-${project.version}.war</arg>
-                           </exec>
-                        </cmd>
-                     </build>
-                  </image>
-               </images>
-            </configuration>
-            <executions>
-               <execution>
-                  <id>create-run-stop-image</id>
-                  <phase>install</phase>
-                  <goals>
-                     <goal>build</goal>
-                  </goals>
-               </execution>
-               <execution>
-                  <id>deploy-to-repo</id>
-                  <phase>deploy</phase>
-                  <goals>
-                     <goal>push</goal>
-                     <goal>remove</goal>
-                  </goals>
-               </execution>
-            </executions>
-         </plugin>
       </plugins>
    </build>
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-         </plugin>
-         <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-         </plugin>
-      </plugins>
-   </reporting>
 </project>
