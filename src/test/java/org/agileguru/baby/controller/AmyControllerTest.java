@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.annotation.Annotation;
 
-import org.agileguru.baby.BabyApplication;
+import org.agileguru.baby.BabyDeemoApplication;
 import org.agileguru.baby.Constants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RestController;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BabyApplication.class)
+@SpringBootTest(classes = BabyDeemoApplication.class)
 public class AmyControllerTest {
     
     @Autowired

@@ -1,13 +1,5 @@
 package org.agileguru.baby.controller;
 
-import static org.agileguru.baby.Constants.DAD_MAPPING;
-import static org.agileguru.baby.Constants.DAD_NAME;
-import static org.agileguru.baby.Constants.MOM_MAPPING;
-import static org.agileguru.baby.Constants.MOM_NAME;
-import static org.agileguru.baby.Constants.WORK;
-import static org.agileguru.baby.Constants.WORK_MAPPING;
-import static org.springframework.http.HttpStatus.OK;
-
 import org.agileguru.baby.Constants;
 import org.agileguru.baby.service.NameByTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

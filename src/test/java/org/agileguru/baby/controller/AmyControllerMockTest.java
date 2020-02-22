@@ -1,11 +1,11 @@
 package org.agileguru.baby.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.lang.annotation.Annotation;
 
-import org.agileguru.baby.BabyApplication;
 import org.agileguru.baby.Constants;
 import org.agileguru.baby.service.NameByTypeService;
 import org.junit.Before;
@@ -15,9 +15,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RestController;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -49,6 +46,7 @@ public class AmyControllerMockTest {
     public void testGetWork() {
         assertThat(this.amyController.getByName(Constants.WORK_MAPPING).getBody()).isNotNull()
         .isEqualTo(Constants.WORK);
+        verify(this.service).getByType(Constants.WORK_MAPPING);
     }
 
     @Test
