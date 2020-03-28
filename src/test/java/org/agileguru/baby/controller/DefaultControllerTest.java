@@ -25,7 +25,7 @@ public class DefaultControllerTest {
         ResponseEntity<String> resp = defaultController.sayHello();
         assertThat(resp).isNotNull();
         assertThat(resp.getStatusCode()).isNotNull().isEqualTo(HttpStatus.OK);
-        assertThat(resp.getBody()).isNotNull().isEqualTo("Hello World");
+        assertThat(resp.getBody()).isNotNull().isEqualTo("Hello World develop");
     }
 
     @Test
