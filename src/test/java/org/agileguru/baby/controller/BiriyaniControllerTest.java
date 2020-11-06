@@ -35,6 +35,7 @@ public class BiriyaniControllerTest {
     @Test
     public void returnsHotBiriyani() {
         assertThat(this.biriyaniController.getHot()).isNotNull() ;
+        assertThat(this.biriyaniController.getHot().getSpiceAmount()).isNotNull() ;
     }
     
     @Test
