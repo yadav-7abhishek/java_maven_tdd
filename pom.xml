@@ -1,16 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.12.RELEASE</version>
-  </parent>
-  <groupId>org.agileguru</groupId>
-  <artifactId>baby</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-parent</artifactId>
+      <version>3.2.6</version>
+   </parent>
+   <groupId>org.agileguru</groupId>
+   <artifactId>baby</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
    <packaging>war</packaging>
    <name>Baby REST Server</name>
    <description>Baby REST Server</description>
+   <properties>
+      <sonar.host.url>https://devops.alacritysys.com/sonar</sonar.host.url>
+      <sonar.login>squ_2da60f9c9a3380eff498d8b59b49bbe5f51ba750</sonar.login>
+   </properties>
    <distributionManagement>
       <snapshotRepository>
          <uniqueVersion>false</uniqueVersion>
@@ -35,28 +41,28 @@
       </dependencies>
    </dependencyManagement>
    <dependencies>
-       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-       </dependency>
-       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-devtools</artifactId>
-        <optional>true</optional>
-        <scope>test</scope>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-devtools</artifactId>
+         <optional>true</optional>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.projectlombok</groupId>
          <artifactId>lombok</artifactId>
       </dependency>
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-actuator</artifactId>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-actuator</artifactId>
       </dependency>
       <dependency>
-        <groupId>de.codecentric</groupId>
-        <artifactId>spring-boot-admin-starter-client</artifactId>
-        <version>2.1.5</version>
+         <groupId>de.codecentric</groupId>
+         <artifactId>spring-boot-admin-starter-client</artifactId>
+         <version>2.1.5</version>
       </dependency>
       <dependency>
          <groupId>org.springframework.boot</groupId>
@@ -64,14 +70,18 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-        <groupId>io.rest-assured</groupId>
-        <artifactId>spring-mock-mvc</artifactId>
-        <scope>test</scope>
+         <groupId>io.rest-assured</groupId>
+         <artifactId>spring-mock-mvc</artifactId>
+         <scope>test</scope>
       </dependency>
       <dependency>
-          <groupId>io.rest-assured</groupId>
-          <artifactId>rest-assured-all</artifactId>
-          <scope>test</scope>
+         <groupId>io.rest-assured</groupId>
+         <artifactId>rest-assured-all</artifactId>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
       </dependency>
    </dependencies>
    <build>
@@ -80,8 +90,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
-               <source>1.8</source>
-               <target>1.8</target>
+               <source>21</source>
+               <target>21</target>
             </configuration>
          </plugin>
          <plugin>
